@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/home/chakku/.config'
+let g:netrw_dirhist_2='/home/chakku/.config/nvim'
+let g:netrw_dirhist_3='/home/chakku/.config'
+let g:netrw_dirhist_4='/home/chakku/.config/nvim'
+let g:netrw_dirhist_5='/home/chakku'
+let g:netrw_dirhist_6='/home/chakku/.config/nvim/ftplugin'
+let g:netrw_dirhist_7='/home/chakku/.config'
+let g:netrw_dirhist_8='/home/chakku/.config/nvim/bundle/jellybeans.vim/colors'
+let g:netrw_dirhist_9='/home/chakku'
