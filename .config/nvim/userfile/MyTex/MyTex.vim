@@ -24,3 +24,5 @@ endfunction
 command! OpenMyTex :call s:OpenTex(s:mytex_dictionary)
 
 command! W :call s:CompileTex()
+
+nmap <F5> :W<CR>
