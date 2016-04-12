@@ -1,6 +1,11 @@
 "シンタックスハイライト有効化
 syntax enable
 
+
+"==================
+"test
+"=================
+
 "=======================
 "     NeoBundle
 "======================
@@ -54,6 +59,12 @@ NeoBundle 'kana/vim-filetype-haskell'
 NeoBundle 'ujihisa/neco-ghc'
 NeoBundle 'dag/vim2hs'
 let g:haskell_conceal=0
+"autocmd Filetype haskell setlocal tabstop=2
+autocmd Filetype haskell setlocal noexpandtab
+"}}}
+
+"javascript"{{{
+NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
 "}}}
 
 "colorscheme {{{
@@ -88,6 +99,10 @@ au BufRead,BufNewFile *.md set filetype=markdown
 "let g:previm_open_cmd = 'open -a Firefox'
 let g:previm_show_header=0      "この値が0だとプレビュー時にヘッダに情報を表示すしない。1だと表示する
 "}}}
+
+"HTML"{{{
+NeoBundle 'othree/html5.vim'
+""}}}
 
 " else{{{
 NeoBundle 'itchyny/lightline.vim'
@@ -127,13 +142,13 @@ NeoBundleLazy 'mopp/layoutplugin.vim', { 'autoload' : { 'commands' : 'LayoutPlug
 "
 
 "indentline"{{{
-NeoBundle 'Yggdroot/indentLine'
+"NeoBundle 'Yggdroot/indentLine'
 "let g:indentLine_enabled=0
-let g:indentLine_fileType=['c' , 'cpp']
-let g:indentLine_faster=1
-let g:indentLine_color_term = 111
-let g:indentLine_color_gui = '#708090'
-let g:indentLine_char = '¦' "use ¦, ┆ or │
+"let g:indentLine_fileType=['c' , 'cpp']
+"let g:indentLine_faster=1
+"let g:indentLine_color_term = 111
+"let g:indentLine_color_gui = '#708090'
+"let g:indentLine_char = '¦' "use ¦, ┆ or │
 "nmap <silent><Leader>i :<C-u>IndentLinesToggle<CR>
 ""}}}
 
@@ -154,7 +169,7 @@ set magic                               "正規表現magicモード
 "正規表現very magicモード
 nnoremap / /\v
 
-set scrolloff=5
+"set scrolloff=5
 set expandtab                          "tabを押した時に半角スペースが挿入される
 set smarttab                           "行頭で<tab>を打ち込んだ場合(>>や<<)shiftwidthの数だけインデントされる
 set tabstop=4                          "ファイル中の<tab>文字を画面上で見た目の何文字に展開する?
@@ -220,6 +235,23 @@ nnoremap <Right> <C-w>l
 "tnoremap <Esc> <C-\><C-n>
 
 autocmd FileType python setlocal noexpandtab tabstop=4 shiftwidth=4
+
+
+"==============
+"  HTML
+"==============
+autocmd FileType html setlocal nocindent nosmartindent
+
+"==============
+" CSS
+" =============
+autocmd Filetype css setlocal nocindent nosmartindent
+
+"==============
+" Verilog
+"==============
+autocmd FileType verilog let b:verilog_indent_modules=1
+autocmd FileType verilog setlocal nosmartindent
 
 "}}
 
