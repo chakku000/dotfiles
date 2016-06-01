@@ -3,9 +3,22 @@
 "runtime! userautoload/*.vim
 
 "=======================
+" encoding
+"=======================
+set fileencoding=utf-8
+set encoding=utf-8
+scriptencoding=utf-8
+
+"=======================
+" compatible
+"=======================
+if &compatible && has('vim_starting')
+  set nocompatible
+endif
+
+"=======================
 "User Setting(色関係)
 "=======================
-syntax enable
 set t_Co=256
 set t_ut=
 colorscheme jellybeans
@@ -29,7 +42,8 @@ set shiftwidth=4
 " 可視化
 "===============
 set list    "改行可視化
-set listchars=tab:>-,trail:-,extends:▷,precedes:◁,nbsp:%
+set listchars=tab:>-,trail:-,extends:▷,precedes:◁,nbsp:%,eol:$
+set cursorline
 
 "====================
 " 括弧
@@ -38,7 +52,7 @@ set showmatch
 set matchtime=1
 
 "===================
-"検索
+" 検索
 "==================
 "小文字の検索でも大文字も見つかるように
 set ignorecase
@@ -61,7 +75,6 @@ set showcmd
 set title "タイトル表示
 set titlelen=95
 
-
 "=================
 "  キーバインド
 "=================
@@ -70,70 +83,98 @@ nnoremap + <C-a>
 "デクリメント
 nnoremap - <C-x>
 
+"====================
+" 自動処理イベント
+"====================
+augroup MyAutoCmd
+  "複数回の実行に備えて一括解除
+  autocmd!
+augroup END
+
+autocmd MyAutoCmd FileType vim  setlocal tabstop=2 shiftwidth=2
+
 "--------------------------
 " Start Neobundle Settings.
 "---------------------------
 if has('vim_starting')
-    if &compatible
-        set compatible
-    endif
-    set runtimepath+=~/.vim/bundle/neobundle.vim/
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
-call neobundle#begin(expand('~/.vim/bundle/'))
 
-"neobundle自体をneobundleで管理
-NeoBundleFetch 'Shougo/neobundle.vim'
+"call neobundle#begin(expand('~/.vim/bundle/'))
+call neobundle#begin()
+if neobundle#load_cache()
 
-"colorscheme
-NeoBundle 'altercation/vim-colors-solarized'
+  "neobundle自体をneobundleで管理
+  NeoBundleFetch 'Shougo/neobundle.vim'
 
-"vimproc
-NeoBundle 'Shougo/vimproc',{
-    \ 'build' : {
-    \       'unix' : 'make -f make_unix.mak',
-    \   },
-    \ }
+  "colorscheme
+  NeoBundle 'altercation/vim-colors-solarized'
 
-" NERSTreeを設定
-NeoBundle 'scrooloose/nerdtree'
+  "vimproc
+  NeoBundle 'Shougo/vimproc',{
+        \ 'build' : {
+        \       'unix' : 'make -f make_unix.mak',
+        \   },
+        \ }
 
-"autocloseプラグイン
-NeoBundle 'Townk/vim-autoclose'
+  " NERSTreeを設定
+  NeoBundle 'scrooloose/nerdtree',{
+        \ 'on_cmd':[
+        \   'NERDTree',
+        \]
+        \ }
 
-NeoBundle 'w0ng/vim-hybrid'
-NeoBundle 'nanotech/jellybeans.vim'
+  "autocloseプラグイン
+  NeoBundle 'Townk/vim-autoclose'
 
-"quickrunプラグイン
-NeoBundle 'thinca/vim-quickrun'
+  NeoBundle 'w0ng/vim-hybrid'
+  NeoBundle 'nanotech/jellybeans.vim'
 
-"STL色付け
-NeoBundle 'Mizuchi/STL-Syntax'
-NeoBundle 'octol/vim-cpp-enhanced-highlight'
+  "quickrunプラグイン
+  NeoBundle 'thinca/vim-quickrun'
 
-"STL色付け2
-NeoBundle 'vim-jp/cpp-vim'
+  "STL色付け
+  NeoBundle 'Mizuchi/STL-Syntax'
+  NeoBundle 'octol/vim-cpp-enhanced-highlight'
 
-"補完
-NeoBundle 'Shougo/neocomplete.vim'
+  "STL色付け2
+  NeoBundle 'vim-jp/cpp-vim'
 
-"Haskellインデントプラグイン
-NeoBundle 'dag/vim2hs'
+  "補完
+  NeoBundle 'Shougo/neocomplete.vim'
 
-"Haskell 補完
-NeoBundle 'ujihisa/neco-ghc'
-"
-NeoBundle 'losingkeys/vim-niji'
+  "Haskellインデントプラグイン
+  NeoBundle 'dag/vim2hs'
 
+  "Haskell 補完
+  NeoBundle 'ujihisa/neco-ghc'
+  "
+  NeoBundle 'losingkeys/vim-niji'
 
-NeoBundle 'thinca/vim-splash'
+  "lightline
+  NeoBundle 'itchyny/lightline.vim'
 
-NeoBundle 'chakku000/OpenTemplate.vim'
+  NeoBundle 'thinca/vim-splash'
 
+  NeoBundle 'chakku000/OpenTemplate.vim'
+endif
 call neobundle#end()
 filetype plugin indent on
+syntax enable
 NeoBundleCheck
 
-"-------------------------
+"========================
 " End Neobundle Settings.
-"-------------------------
+"========================
+
+"====================
+" plugin setting
+"====================
+
+"lightlingの設定
+if neobundle#tap('lightline.vim')
+  let g:lightline={
+        \'colorscheme':'wombat'
+        \}
+endif
