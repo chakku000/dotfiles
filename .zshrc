@@ -13,7 +13,7 @@ colors
 #適当に追加した設定
 #----------------
 zstyle ':completion:*:default' menu select=1
-#zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 alias g++11="g++ -std=c++11"
 alias g++="g++ -std=c++11"
