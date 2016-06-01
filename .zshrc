@@ -3,6 +3,8 @@ compinit
 
 export LANG=ja_JP.UTF-8
 
+bindkey -v
+
 #色を使用できるようにする
 autoload -Uz colors
 colors
@@ -11,15 +13,18 @@ colors
 #適当に追加した設定
 #----------------
 zstyle ':completion:*:default' menu select=1
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+#zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 alias g++11="g++ -std=c++11"
+alias g++="g++ -std=c++11"
 alias tmux='tmux -2'
 alias gosh='rlwrap gosh'
 alias emacs='vim'
 alias filer='nemo &'
 alias sl='ls'
-
+if [ -e "$HOME/App/bs/col.sh" ]; then
+    alias colortest="bash $HOME/App/bs/col.sh"
+fi
 
 
 #アセンブラ用
@@ -31,6 +36,7 @@ xkbcomp -I$HOME/.xkb $HOME/.xkb/keymap/mykbd $DISPLAY 2> /dev/null
 #export http_proxy="http://131.112.125.238:3128"
 export XDG_CONFIG_HOME=$HOME/.config
 export TERM=xterm-256color
+export PATH="$HOME/Library/Haskell/bin:$PATH"
 
 #----------------------------
 
@@ -64,11 +70,14 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 #1行表示
 #PROMPT="%~$#"
 #2行表示
-PROMPT="%{${fg[cyan]}%}[%n@%m]%{${fg[cyan]}%}%~%#%{${reset_color}%} "
+#PROMPT="%{${fg[green]}%}[%n@%m]%{${fg[green]}%}%~%#%{${reset_color}%} "
+PROMPT="%{[38;5;048m%}[%n@%m]%{[38;5;086m%}%~%#%{${reset_color}%} "
+
 
 #lsで色をつける
 export LSCOLORS=exfxcxdxbxegedabagacad
-export LS_COLORS='di=36:ln=35:so=32:pi=33:ex=35:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=35:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+zstyle ':completion:' list=colors 'di=34' 'ln=35' 'ex=32'
 
 ########################################
 # OS 別の設定
