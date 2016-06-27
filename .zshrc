@@ -1,3 +1,6 @@
+
+#autoload -U : -Uオプションをつけるとユーザーのaliasによってその関数が書き換えられるのを防ぐ
+
 autoload -U compinit
 compinit
 
@@ -78,6 +81,18 @@ PROMPT="%{[38;5;048m%}[%n@%m]%{[38;5;086m%}%~%#%{${reset_color}%} "
 export LSCOLORS=exfxcxdxbxegedabagacad
 export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=35:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
 zstyle ':completion:' list=colors 'di=34' 'ln=35' 'ex=32'
+
+
+#vsc_info(version control system)
+autoload -Uz vcs_info
+setopt prompt_subst
+zstyle ':vcs_info:*' formats '[%b]'
+precmd () {
+    psvar=()
+    LANG=en_US.UTF-8 vcs_info
+    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+}
+RPROMPT="%1(v|%F{magenta}%1v%f|)"
 
 ########################################
 # OS 別の設定
