@@ -1,9 +1,3 @@
-"
-"          ┌─┐┬ ┬┌─┐┬┌─┬┌─┬ ┬  ┌─┐┌─┐┬
-"          │  ├─┤├─┤├┴┐├┴┐│ │  ├─┘│ ││
-"          └─┘┴ ┴┴ ┴┴ ┴┴ ┴└─┘  ┴  └─┘┴
-"
-"
 "分割した設定ファイルをすべて読み込む
 "set runtimepath+=~/.vim/
 "runtime! userautoload/*.vim
@@ -72,6 +66,11 @@ set hlsearch
 set wrapscan
 
 "====================
+"  折り畳み
+"====================
+set foldmethod=marker
+
+"====================
 " コマンドライン等
 "====================
 set laststatus=2 "常にステータス行を表示
@@ -88,6 +87,14 @@ set titlelen=95
 nnoremap + <C-a>
 "デクリメント
 nnoremap - <C-x>
+"Shift+Tabで左に移動
+inoremap <S-Tab> <Esc>lli
+nnoremap <S-Tab> <S-a>
+
+"====================
+" clipboard
+"====================
+set clipboard=unnamedplus
 
 "====================
 " 自動処理イベント
@@ -98,10 +105,12 @@ augroup MyAutoCmd
 augroup END
 
 autocmd MyAutoCmd FileType vim  setlocal tabstop=2 shiftwidth=2
+autocmd MyAutoCmd FileType text setlocal tabstop=2 shiftwidth=2
+autocmd MyAutoCmd FileType asm  imap <F1> <Plug>CapsLockToggle
 
-"--------------------------
+"===========================
 " Start Neobundle Settings.
-"---------------------------
+"===========================
 if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
@@ -120,7 +129,7 @@ if neobundle#load_cache()
   "vimproc
   NeoBundle 'Shougo/vimproc',{
         \ 'build' : {
-        \       'unix' : 'make -f make_unix.mak',
+        \       'unix' : 'make',
         \   },
         \ }
 
@@ -163,6 +172,14 @@ if neobundle#load_cache()
 
   NeoBundle 'thinca/vim-splash'
 
+  NeoBundle 'limadm/vim-blues'
+
+  " CapsLock
+  NeoBundle 'tpope/vim-capslock' , {
+        \ 'on_ft' : [ 'asm' ],
+        \}
+
+
   NeoBundle 'chakku000/OpenTemplate.vim'
 endif
 call neobundle#end()
@@ -183,4 +200,24 @@ if neobundle#tap('lightline.vim')
   let g:lightline={
         \'colorscheme':'wombat'
         \}
+endif
+
+
+"neocomplete
+if neobundle#tap('neocomplete.vim')
+  "necomplete開始
+  let g:neocomplete#enable_at_startup=1
+  "大文字が入力されるまで大文字小文字を区別しない
+  let g:neocomplete#enable_smart_case=1
+  "日本語を補完しない
+  "なんかこれしたらうごかなくなる
+  "let g:neocomplete#lock_iminsert=1
+
+  "<TAB>: completion
+  inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+  "<C-h>,<BS>:close popup and deletebackword char
+  inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+  inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+  "diision by Enter
+  inoremap <expr><CR> pumvisible() ? "\<C-y>" : "\<CR>"
 endif
