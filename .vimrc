@@ -44,6 +44,7 @@ set shiftwidth=4
 set list    "改行可視化
 set listchars=tab:>-,trail:-,extends:▷,precedes:◁,nbsp:%,eol:$
 set cursorline
+set backspace=indent,eol,start "バックスペースで空白等を消去可能
 
 "====================
 " 括弧
