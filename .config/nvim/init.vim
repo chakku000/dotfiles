@@ -73,6 +73,7 @@ NeoBundle 'w0ng/vim-hybrid'
 NeoBundleLazy 'Mizuchi/STL-Syntax',{
             \"autoload" : {"filetypes" : ["cpp"]}
             \}
+NeoBundle 'limadm/vim-blues'
 "}}}
 
 "tex{{{
@@ -160,7 +161,18 @@ NeoBundleCheck
 "-------------------------------------
 filetype plugin indent on
 
+"=====================
+" plugin setting
+" ====================
+if neobundle#tap('lightline.vim')
+    let g:lightline = {
+                \ 'colorscheme' : 'wombat',
+                \}
+endif
 
+"=====================
+" My Setting
+" ====================
 set title
 
 set nowrap                              "範囲外に出た時に折り返さない
