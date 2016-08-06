@@ -1,4 +1,4 @@
-
+#マニュアル man zshmoduloes
 #autoload -U : -Uオプションをつけるとユーザーのaliasによってその関数が書き換えられるのを防ぐ
 
 autoload -U compinit
@@ -49,6 +49,9 @@ setopt auto_pushd
 setopt pushd_ignore_dups
 #ディレクトリ名だけでcdする
 setopt auto_cd
+function chpwd(){
+    ls -F --color=auto
+}
 #同じコマンドをヒストリに残さない
 setopt hist_ignore_all_dups
 
@@ -79,9 +82,19 @@ PROMPT="%{[38;5;048m%}[%n@%m]%{[38;5;086m%}%~%#%{${reset_color}%} "
 
 #lsで色をつける
 export LSCOLORS=exfxcxdxbxegedabagacad
-export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=35:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-zstyle ':completion:' list=colors 'di=34' 'ln=35' 'ex=32'
+export LS_COLORS='di=34:ln=33;44:so=32:pi=33:ex=35:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+zstyle ':completion:' list=colors 'di=34' 'ln=33' 'ex=35'
 
+#COLOR_LIST
+# 文字色        背景色
+# 30 黒         40 黒
+# 31 赤         41 赤
+# 32 緑         42 緑
+# 33 黄         43 黃
+# 34 青         44 青
+# 35 紫         45 紫
+# 36 水色       46 水
+# 37 白         47 白
 
 #vsc_info(version control system)
 autoload -Uz vcs_info
