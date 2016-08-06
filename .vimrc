@@ -44,13 +44,18 @@ set shiftwidth=4
 set list    "改行可視化
 set listchars=tab:>-,trail:-,extends:▷,precedes:◁,nbsp:%,eol:$
 set cursorline
-set backspace=indent,eol,start "バックスペースで空白等を消去可能
 
 "====================
 " 括弧
 "====================
 set showmatch
 set matchtime=1
+
+"===================
+" 操作
+"===================
+set backspace=indent,eol,start "バックスペースで空白等を消去可能
+set mouse=a
 
 "===================
 " 検索
@@ -91,6 +96,9 @@ nnoremap - <C-x>
 "Shift+Tabで左に移動
 inoremap <S-Tab> <Esc>lli
 nnoremap <S-Tab> <S-a>
+"<C-l>,<C-h>でウィンドウ間の移動
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
 
 "====================
 " clipboard
