@@ -33,6 +33,7 @@ set relativenumber
 "インデント
 "=====================
 set autoindent
+set smartindent
 set expandtab
 set smarttab
 set tabstop=4
@@ -42,7 +43,8 @@ set shiftwidth=4
 " 可視化
 "===============
 set list    "改行可視化
-set listchars=tab:>-,trail:-,extends:▷,precedes:◁,nbsp:%,eol:$
+"set listchars=tab:>-,trail:-,extends:▷,precedes:◁,nbsp:%,eol:$
+set listchars=tab:>-,extends:▷,precedes:◁,nbsp:%,eol:$
 set cursorline
 
 "====================
@@ -159,27 +161,38 @@ if neobundle#load_cache()
   NeoBundle 'thinca/vim-quickrun'
 
   "STL色付け
-  NeoBundle 'Mizuchi/STL-Syntax'
-  NeoBundle 'octol/vim-cpp-enhanced-highlight'
+  NeoBundle 'Mizuchi/STL-Syntax',{
+        \ 'on_ft' : ['cpp'],
+        \}
+  NeoBundle 'octol/vim-cpp-enhanced-highlight' , {
+        \ 'on_ft' : ['cpp'],
+        \}
 
   "STL色付け2
-  NeoBundle 'vim-jp/cpp-vim'
+  NeoBundle 'vim-jp/cpp-vim' , {
+        \ 'on_ft' : ['cpp'],
+        \}
 
   "補完
   NeoBundle 'Shougo/neocomplete.vim'
 
   "Haskellインデントプラグイン
-  NeoBundle 'dag/vim2hs'
+  NeoBundle 'dag/vim2hs' , {
+        \ 'on_ft' : ['haskell'],
+        \}
 
   "Haskell 補完
-  NeoBundle 'ujihisa/neco-ghc'
-  "
+  NeoBundle 'ujihisa/neco-ghc' , {
+        \ 'on_ft' : ['haskell'],
+        \}
+
+  " lisp系言語の括弧を色付け
   NeoBundle 'losingkeys/vim-niji'
 
   "lightline
   NeoBundle 'itchyny/lightline.vim'
 
-  NeoBundle 'thinca/vim-splash'
+  "NeoBundle 'thinca/vim-splash'
 
   NeoBundle 'limadm/vim-blues'
 
@@ -211,7 +224,6 @@ if neobundle#tap('lightline.vim')
         \}
 endif
 
-
 "neocomplete
 if neobundle#tap('neocomplete.vim')
   "necomplete開始
@@ -229,4 +241,9 @@ if neobundle#tap('neocomplete.vim')
   inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
   "diision by Enter
   inoremap <expr><CR> pumvisible() ? "\<C-y>" : "\<CR>"
+endif
+
+"OpenTemplateの設定
+if neobundle#tap('OpenTemplate.vim')
+  let g:OpenTemplate#Template_dir = '~/Template'
 endif
