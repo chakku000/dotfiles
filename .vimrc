@@ -101,6 +101,7 @@ nnoremap <S-Tab> <S-a>
 "<C-l>,<C-h>でウィンドウ間の移動
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
+inoremap {<Enter> {}<Left><CR><ESC><S-o>
 
 "====================
 " clipboard
