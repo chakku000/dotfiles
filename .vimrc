@@ -103,6 +103,9 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 inoremap {<Enter> {}<Left><CR><ESC><S-o>
 
+"括弧を入力後<Enter>を押した時に改行もする
+inoremap {<Enter> {}<Left><CR><ESC><S-o>
+
 "====================
 " clipboard
 "====================
@@ -139,10 +142,14 @@ if neobundle#load_cache()
   NeoBundle 'altercation/vim-colors-solarized'
 
   "vimproc
-  NeoBundle 'Shougo/vimproc',{
+  NeoBundle 'Shougo/vimproc.vim', {
         \ 'build' : {
-        \       'unix' : 'make',
-        \   },
+        \     'windows' : 'tools\\update-dll-mingw',
+        \     'cygwin' : 'make -f make_cygwin.mak',
+        \     'mac' : 'make',
+        \     'linux' : 'make',
+        \     'unix' : 'gmake',
+        \    },
         \ }
 
   " NERSTreeを設定
@@ -151,6 +158,8 @@ if neobundle#load_cache()
         \   'NERDTree',
         \]
         \ }
+
+  NeoBundle 'Shougo/unite.vim'
 
   "autocloseプラグイン
   NeoBundle 'Townk/vim-autoclose'
