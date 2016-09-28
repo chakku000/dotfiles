@@ -1,10 +1,14 @@
 "シンタックスハイライト有効化
-syntax enable
+"syntax enable
 
 
 "==================
-"test
+" Ubuntu上でfcitxとのいろいろ
 "=================
+function! ImInActivate()
+  call system('fcitx-remote -c')
+endfunction
+inoremap <silent> <C-[> <ESC>:call ImInActivate()<CR>
 
 "=======================
 "     NeoBundle
@@ -30,6 +34,10 @@ inoremap <expr><CR> pumvisible() ? "\<C-y>" : "\<CR>"
 "compile{{{
 NeoBundle 'thinca/vim-quickrun'
 let g:quickrun_config = {}
+let g:quickrun_config.cpp = {
+            \ 'command' : 'g++',
+            \ 'cmdopt' : '-std=c++11'
+            \}
 "}}}
 
 "filer"{{{
@@ -42,6 +50,7 @@ inoremap {<Enter> {}<Left><CR><ESC><S-o>
 "if neobundle#tap('vim-autoclose')
 "    let b:AutoClosePairs = AutoClose#DefaultPairsModified("","\"")
 "endif
+let g:AutoCloseExpandSpace=0
 autocmd Filetype scheme let b:AutoClosePairs = AutoClose#DefaultPairsModified("","'")
 "}}}
 
@@ -74,7 +83,6 @@ NeoBundle 'w0ng/vim-hybrid'
 NeoBundleLazy 'Mizuchi/STL-Syntax',{
             \"autoload" : {"filetypes" : ["cpp"]}
             \}
-NeoBundle 'limadm/vim-blues'
 "}}}
 
 "tex{{{
@@ -129,6 +137,20 @@ let java_allow_cpp_keywords=1
 
 "}}}
 
+"imput modes..."{{{
+NeoBundle 'tyru/eskk.vim'
+
+if neobundle#tap('eskk.vim')
+    let g:dictionary = '~/.eskk'
+    let g:dictionary = {'path' : '~/.skk-jisyo' , 'sorted' : 0 , 'encoding' : 'utf-8'}
+    let g:eskk#large_dictionary = { 'path': "~/.eskk/SKK-JISYO.L", 'sorted': 1, 'encoding': 'euc-jp', }
+    let g:eskk#enable_completion = 1
+endif
+"}}}
+
+"processing
+NeoBundle 'sophacles/vim-processing'
+
 "自作プラグイン
 NeoBundle 'chakku000/OpenTemplate.vim'
 
@@ -162,18 +184,15 @@ NeoBundleCheck
 "-------------------------------------
 filetype plugin indent on
 
-"=====================
-" plugin setting
-" ====================
-if neobundle#tap('lightline.vim')
-    let g:lightline = {
-                \ 'colorscheme' : 'wombat',
-                \}
-endif
+"-------------------------------------
+" ファイルエンコーディング等
+"-------------------------------------
+set encoding=utf-8
+set ambiwidth=double
 
-"=====================
-" My Setting
-" ====================
+"スワップファイルの出力場所を変更
+set directory=./
+
 set title
 
 set nowrap                              "範囲外に出た時に折り返さない
@@ -205,7 +224,7 @@ set relativenumber
 "Normal Mode <F3>で行番号の表示を絶対/相対で切り替える
 nnoremap <F3> :<C-u>setlocal relativenumber!<CR>
 
-set clipboard=unnamedplus
+set clipboard=unnamed,unnamedplus
 
 set ttimeout
 set ttimeoutlen=0
@@ -216,6 +235,7 @@ set cursorline
 "不可視を可視化{{
 set list
 set listchars=tab:»_,trail:_,eol:$,extends:»,precedes:«,nbsp:%
+hi NonText guibg=NONE guifg=DarkGreen
 "}
 
 "colorscheme hybrid
@@ -231,21 +251,31 @@ set matchtime=0
 hi MatchParen term=standout ctermbg=Blue ctermfg=white guibg=Red guifg=Black 
 "対応する括弧のハイライトを表示しない
 "let loaded_matchparen = 1
-"my key mapping{{
+
+
+"=================================
+"   キーマッピング
+"=================================
 inoremap <S-TAB> <Esc>lli
 nnoremap <S-TAB> <S-a>
 tnoremap <C-n> <C-\><C-n>
+tnoremap <Esc> <C-\><C-n>
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-nnoremap <Left> <C-w>h
-nnoremap <Down> <C-w>j
-nnoremap <Up> <C-w>k
-nnoremap <Right> <C-w>l
+nnoremap <Left> gT
+nnoremap <Right> gt
+nnoremap <Up> k
+inoremap <Up> k
+nnoremap <Down> j
+inoremap <Down> j
 
 "terminal mode
 "tnoremap <Esc> <C-\><C-n>
+
+"自動でコメントアウトされないようにする
+autocmd FileType * setlocal formatoptions-=ro
 
 autocmd FileType python setlocal noexpandtab tabstop=4 shiftwidth=4
 
@@ -266,7 +296,11 @@ autocmd Filetype css setlocal nocindent nosmartindent
 autocmd FileType verilog let b:verilog_indent_modules=1
 autocmd FileType verilog setlocal nosmartindent
 
+
+autocmd Filetype asm setlocal noexpandtab shiftwidth=2  tabstop=2 softtabstop=2
 "}}
+
+syntax enable
 
 "{{{     独自関数定義
 
