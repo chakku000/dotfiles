@@ -8,8 +8,6 @@ syntax enable
 
 "=======================
 "     NeoBundle
-"======================
-
 set runtimepath+=~/.config/nvim/bundle/neobundle.vim/
 call neobundle#begin(expand('~/.config/nvim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
@@ -41,6 +39,9 @@ NeoBundle 'scrooloose/nerdtree'
 "autoclose{{{
 NeoBundle 'Townk/vim-autoclose'
 inoremap {<Enter> {}<Left><CR><ESC><S-o>
+"if neobundle#tap('vim-autoclose')
+"    let b:AutoClosePairs = AutoClose#DefaultPairsModified("","\"")
+"endif
 autocmd Filetype scheme let b:AutoClosePairs = AutoClose#DefaultPairsModified("","'")
 "}}}
 

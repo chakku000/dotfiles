@@ -1,0 +1,14 @@
+xkb_keymap {
+    xkb_keycodes  { include "evdev+aliases(qwerty)"    };
+    xkb_types     { include "complete"    };
+    xkb_compat    { include "complete"    };
+    xkb_symbols   { include "pc+jp+us:2+inet(evdev)+ctrl(nocaps)"   
+    
+        key <HENK> {[Control_L]};
+        key <MUHE> {[Shift_R]};
+        key <HKTG> {[Escape]};
+        modifier_map Shift { <MUHE> };
+        modifier_map Control {<HENK>};
+    }; 
+    xkb_geometry  { include "pc(pc104)"    };
+};
