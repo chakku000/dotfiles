@@ -212,6 +212,9 @@ if neobundle#load_cache()
 
 
   NeoBundle 'chakku000/OpenTemplate.vim'
+
+
+  NeoBundle 'whatyouhide/vim-gotham'
 endif
 call neobundle#end()
 filetype plugin indent on
