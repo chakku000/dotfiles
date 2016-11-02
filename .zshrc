@@ -25,6 +25,7 @@ alias gosh='rlwrap gosh'
 alias emacs='vim'
 alias filer='nemo &'
 alias sl='ls'
+alias -- ++='g++ -std=c++14'
 if [ -e "$HOME/App/bs/col.sh" ]; then
     alias colortest="bash $HOME/App/bs/col.sh"
 fi
@@ -40,6 +41,11 @@ xkbcomp -I$HOME/.xkb $HOME/.xkb/keymap/mykbd $DISPLAY 2> /dev/null
 export XDG_CONFIG_HOME=$HOME/.config
 export TERM=xterm-256color
 export PATH="$HOME/Library/Haskell/bin:$PATH"
+
+#for linux brew
+export PATH="$HOME/.linuxbrew/bin:$PATH"
+export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
+export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
 
 #----------------------------
 
