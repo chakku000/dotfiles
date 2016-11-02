@@ -12,8 +12,6 @@ inoremap <silent> <C-[> <ESC>:call ImInActivate()<CR>
 
 "=======================
 "     NeoBundle
-"======================
-
 set runtimepath+=~/.config/nvim/bundle/neobundle.vim/
 call neobundle#begin(expand('~/.config/nvim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
@@ -49,6 +47,9 @@ NeoBundle 'scrooloose/nerdtree'
 "autoclose{{{
 NeoBundle 'Townk/vim-autoclose'
 inoremap {<Enter> {}<Left><CR><ESC><S-o>
+"if neobundle#tap('vim-autoclose')
+"    let b:AutoClosePairs = AutoClose#DefaultPairsModified("","\"")
+"endif
 let g:AutoCloseExpandSpace=0
 autocmd Filetype scheme let b:AutoClosePairs = AutoClose#DefaultPairsModified("","'")
 "}}}
