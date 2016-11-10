@@ -83,7 +83,8 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 #PROMPT="%~$#"
 #2行表示
 #PROMPT="%{${fg[green]}%}[%n@%m]%{${fg[green]}%}%~%#%{${reset_color}%} "
-PROMPT="%{[38;5;048m%}[%n@%m]%{[38;5;086m%}%~%#%{${reset_color}%} "
+PROMPT="%{[38;5;048m%}[%n]%{[38;5;086m%}[%~% ]
+\$%{${reset_color}%} "
 
 
 #lsで色をつける
