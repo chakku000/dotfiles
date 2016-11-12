@@ -9,6 +9,15 @@ call dein#add('Shougo/dein.vim')
 call dein#add('Shougo/deoplete.nvim')
 call dein#add('Shougo/denite.nvim')
 
+call dein#add('cohama/lexima.vim')
+
+"----- C++ ------
+call dein#add('octol/vim-cpp-enhanced-highlight',{
+        \ 'on_ft':[
+        \    'cpp',
+        \   ],
+        \ })
+
 "---colorscheme----
 call dein#add('nanotech/jellybeans.vim')
 call dein#add('w0ng/vim-hybrid')
@@ -19,7 +28,7 @@ call dein#end()
 
 "----未インストールのプラグインを確認---
 if dein#check_install()
-	call dein#install()
+   call dein#install()
 endif
 
 
@@ -36,14 +45,20 @@ command! DeinList call s:dein_list()
 
 
 "-------------プラグインの設定----------------
+" deoplete
 if dein#tap('deoplete.nvim')
-	let g:deoplete#enable_at_start=1
+	let g:deoplete#enable_at_startup=1
 endif
 
+" lexima
+if dein#tap('lexima.vim')
+    let g:lexima_enable_basic_rules=1
+endif
+
+" lightline
 if dein#tap('lightline.vim')
 	let g:lightline = {
 		\'colorscheme' : 'wombat',
 		\}
 endif
 
-filetype plugin indent on
