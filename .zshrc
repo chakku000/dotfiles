@@ -20,7 +20,9 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 alias g++11="g++ -std=c++11"
 alias g++="g++ -std=c++11"
-alias tmux='tmux -2'
+#alias tmux='tmux -2'
+alias tmux="env TERM=xterm-256color tmux"
+
 alias gosh='rlwrap gosh'
 alias emacs='vim'
 alias filer='nemo &'
