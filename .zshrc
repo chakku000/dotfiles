@@ -91,8 +91,8 @@ PROMPT="%{[38;5;048m%}[%n]%{[38;5;086m%}[%~% ]
 
 #lsで色をつける
 export LSCOLORS=exfxcxdxbxegedabagacad
-export LS_COLORS='di=34:ln=33;44:so=32:pi=33:ex=35:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-zstyle ':completion:' list=colors 'di=34' 'ln=33' 'ex=35'
+export LS_COLORS='di=01;34:ln=33;44:so=32:pi=33:ex=35:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+zstyle ':completion:' list-colors ${(s.:.)LS_COLORS}
 
 #COLOR_LIST
 # 文字色        背景色
