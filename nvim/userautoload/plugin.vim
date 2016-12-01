@@ -18,6 +18,15 @@ call dein#add('octol/vim-cpp-enhanced-highlight',{
         \   ],
         \ })
 
+"----- Haskell -----
+call dein#add('neovimhaskell/haskell-vim',{
+            \ 'on_ft' : ['haskell',],
+            \})
+
+call dein#add('eagletmt/neco-ghc',{
+            \ 'on_ft' : ['haskell',],
+            \})
+
 "---colorscheme----
 call dein#add('nanotech/jellybeans.vim')
 call dein#add('w0ng/vim-hybrid')
@@ -61,4 +70,6 @@ if dein#tap('lightline.vim')
 		\'colorscheme' : 'wombat',
 		\}
 endif
+
+
 
