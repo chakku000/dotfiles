@@ -85,8 +85,11 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 #PROMPT="%~$#"
 #2行表示
 #PROMPT="%{${fg[green]}%}[%n@%m]%{${fg[green]}%}%~%#%{${reset_color}%} "
-PROMPT="%{[38;5;048m%}[%n]%{[38;5;086m%}[%~% ]
-\$%{${reset_color}%} "
+#PROMPT="%{[38;5;048m%}[%n]%{[38;5;086m%}[%~% ]
+#\$%{${reset_color}%} "
+# $'\n' --> 改行文字
+#PROMPT="%{${fg_bold[magenta]}%}[%n]%{${reset_color}% %{${fg_bold[yellow]}%}[%~]"$'\n'"%{${fg_bold[cyan]}%}(✿╹◡╹)ﾉ%{${reset_color}%} "
+PROMPT="%{[38;5;212;1m%}[%n]%{[0m%} %{${fg_bold[yellow]}%}[%~]"$'\n'"%{${fg_bold[cyan]}%}(✿╹◡╹)ﾉ%{${reset_color}%} "
 
 
 #lsで色をつける
