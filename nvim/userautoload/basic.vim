@@ -13,6 +13,8 @@ set noshowcmd       " 入力中のコマンドを非表示
 set title           " タイトルを表示
 set cursorline      " 現在行を可視化
 
+set guicursor=a:blinkon0
+
 "====time======
 set ttimeout
 set timeoutlen=0
