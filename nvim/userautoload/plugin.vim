@@ -33,6 +33,9 @@ call dein#add('w0ng/vim-hybrid')
 
 call dein#add('itchyny/lightline.vim')
 
+"-- My Plugin -----
+call dein#add('chakku000/OpenTemplate.vim')
+
 call dein#end()
 
 "----未インストールのプラグインを確認---
@@ -61,7 +64,7 @@ endif
 
 " lexima
 if dein#tap('lexima.vim')
-    let g:lexima_enable_basic_rules=1
+"    let g:lexima_enable_basic_rules=1
 endif
 
 " lightline
@@ -71,5 +74,7 @@ if dein#tap('lightline.vim')
 		\}
 endif
 
-
+if dein#tap('OpenTemplate.vim')
+    let g:OpenTemplate#Template_dir = '~/Templates'
+endif
 
