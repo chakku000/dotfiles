@@ -11,6 +11,9 @@ call dein#add('Shougo/denite.nvim')
 
 call dein#add('cohama/lexima.vim')
 
+" filer
+call dein#add('scrooloose/nerdtree')
+
 "----- C++ ------
 call dein#add('octol/vim-cpp-enhanced-highlight',{
         \ 'on_ft':[
@@ -87,3 +90,10 @@ if dein#tap('OpenTemplate.vim')
     let g:OpenTemplate#Template_dir = '~/Templates'
 endif
 
+" NerdTree
+if dein#tap('nerdtree')
+    let s:file_name=expand('%')
+    if has('vim_starting') &&  s:file_name == ''
+        autocmd VimEnter * NERDTree ./
+    endif
+endif
