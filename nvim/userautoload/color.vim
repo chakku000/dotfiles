@@ -4,6 +4,7 @@ set termguicolors
 
 " カラースキームがhybridの際に括弧の対応色を変える
 autocmd ColorScheme hybrid highlight MatchParen ctermbg=None guibg=None guifg=cyan
+autocmd ColorScheme hybrid highlight javaC_JavaLang guifg=#8abeb7
 
 set background=dark
 colorscheme hybrid 
