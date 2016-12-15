@@ -9,3 +9,4 @@ nnoremap <S-Tab> a
 "ctrl-hでbackspace
 inoremap <C-h> <BS>
 inoremap <C-d> <DEL>
+inoremap <C-l> <Right>
