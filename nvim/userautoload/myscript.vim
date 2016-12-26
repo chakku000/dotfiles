@@ -26,3 +26,13 @@ function! s:get_highlight_info()
     execute "highlight " . s:get_syn_name(s:get_syn_id(1))
 endfunction
 command! HighlightInfo call s:get_highlight_info()
+
+
+"行末の余分なスペースを除去
+function! DeleteExtraSpace() abort
+    let pos = getpos(".")
+    :%s/\s\+$//g
+    :call setpos('.',pos)
+endfunction
+
+command! DeleteExtraSpace :call DeleteExtraSpace()
