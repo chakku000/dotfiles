@@ -10,3 +10,5 @@ nnoremap <S-Tab> a
 inoremap <C-h> <BS>
 inoremap <C-d> <DEL>
 inoremap <C-l> <Right>
+
+inoremap <C-t> <C-V><Tab>
