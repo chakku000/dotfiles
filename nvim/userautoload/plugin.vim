@@ -77,6 +77,12 @@ endif
 " lexima
 if dein#tap('lexima.vim')
 "    let g:lexima_enable_basic_rules=1
+    "|)では括弧を保管しない
+    call lexima#add_rule({'char' : '(' , 'input':'(','at':'\%#)'})
+    " コメント内では括弧を保管しない
+    call lexima#add_rule({'char' : '(' , 'input' : '(' , 'syntax' : 'Comment'})
+    " 文字列内では補完しない
+    call lexima#add_rule({'char' : '(' , 'input' : '(' , 'syntax' : 'String'})
 endif
 
 " lightline
@@ -87,13 +93,13 @@ if dein#tap('lightline.vim')
 endif
 
 if dein#tap('OpenTemplate.vim')
-    let g:OpenTemplate#Template_dir = '~/Templates'
+    let g:OpenTemplate#Template_dir = '~/Template'
 endif
 
 " NerdTree
 if dein#tap('nerdtree')
     let s:file_name=expand('%')
-    if has('vim_starting') &&  s:file_name == ''
-        autocmd VimEnter * NERDTree ./
-    endif
+"    if has('vim_starting') &&  s:file_name == ''
+"        autocmd VimEnter * NERDTree ./
+"    endif
 endif
