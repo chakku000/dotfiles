@@ -64,34 +64,26 @@ command! DeinList call s:dein_list()
 if dein#tap('deoplete.nvim')
 	let g:deoplete#enable_at_startup=1
     "<TAB>: completion.  (copy from Shougo's github)
-"    inoremap <silent><expr> <TAB>
-"                \ pumvisible() ? "\<C-n>" :
-"                \ <SID>check_back_space() ? "\<TAB>" :
-"                \ deoplete#manual_complete()
-"    function! s:check_back_space() abort "{{{
-"        let col = col('.') - 1
-"        return !col || getline('.')[col - 1]  =~ '\s'
-"    endfunction"}}}
-    " <C-h>, <BS>: close popup and delete backword char.
-    inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
-    inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
-
-    inoremap <expr><C-g> deoplete#undo_completion()
-    " <C-l>: redraw candidates      -> conflict with my setting
-    " inoremap <expr><C-l>       deoplete#refresh()
-
-    " <CR>: close popup and save indent.
-    inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-    function! s:my_cr_function() abort
-        return deoplete#cancel_popup() . "\<CR>"
-    endfunction
-
-    inoremap <expr> '  pumvisible() ? deoplete#close_popup() : "'"
+    inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+    "inoremap <silent><expr> <TAB>
+    "            \ pumvisible() ? "\<C-n>" :
+    "            \ <SID>check_back_space() ? "\<TAB>" :
+    "            \ deoplete#manual_complete()
+    function! s:check_back_space() abort "{{{
+        let col = col('.') - 1
+        return !col || getline('.')[col - 1]  =~ '\s'
+    endfunction"}}}
 endif
 
 " lexima
 if dein#tap('lexima.vim')
 "    let g:lexima_enable_basic_rules=1
+    "|)では括弧を保管しない
+    call lexima#add_rule({'char' : '(' , 'input':'(','at':'\%#)'})
+    " コメント内では括弧を保管しない
+    call lexima#add_rule({'char' : '(' , 'input' : '(' , 'syntax' : 'Comment'})
+    " 文字列内では補完しない
+    call lexima#add_rule({'char' : '(' , 'input' : '(' , 'syntax' : 'String'})
 endif
 
 " lightline
@@ -107,7 +99,7 @@ endif
 
 " NerdTree
 if dein#tap('nerdtree')
-"    let s:file_name=expand('%')
+    let s:file_name=expand('%')
 "    if has('vim_starting') &&  s:file_name == ''
 "        autocmd VimEnter * NERDTree ./
 "    endif
