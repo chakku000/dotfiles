@@ -104,3 +104,4 @@ if dein#tap('nerdtree')
 "        autocmd VimEnter * NERDTree ./
 "    endif
 endif
+
