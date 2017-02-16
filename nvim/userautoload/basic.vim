@@ -32,6 +32,7 @@ set softtabstop=4       " tabキーを押した時
 set shiftround          " インデントをshiftwidthの倍数にする
 set autoindent
 set smartindent
+set breakindent         " 折りたたみ時にインデントを考慮
 
 set backspace=indent,eol,start      " インデントと改行をbackspaceで消せるようにする
 
@@ -45,6 +46,9 @@ set smartcase           " 検索に大文字が含まれていた場合ignorecas
 set incsearch           " 検索コマンドを入力中にも入力中の部分を検索表示する
 set hlsearch            " 検索結果をハイライトする
 set wrapscan            " 検索をファイル末尾までしたらファイル先頭に戻る
+
+"===== Mouse =====
+set mouse=
 
 
 let g:python3_host_prog = '/usr/bin/python3'

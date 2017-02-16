@@ -12,3 +12,15 @@ inoremap <C-d> <DEL>
 inoremap <C-l> <Right>
 
 inoremap <C-t> <C-V><Tab>
+
+"terminal modeからの脱出
+tnoremap <C-n> <C-\><C-n>
+
+
+function! s:CompileTex()
+    :w
+    :! latexmk %
+endfunction
+
+command! W :call s:CompileTex() 
+nmap <F5> :W<CR>
