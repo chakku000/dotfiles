@@ -24,7 +24,7 @@ alias g++="g++ -std=c++11"
 alias tmux="env TERM=xterm-256color tmux"
 
 alias gosh='rlwrap gosh'
-alias emacs='vim'
+alias python='python3'
 alias filer='nemo &'
 alias sl='ls'
 alias -- ++='g++ -std=c++14'
