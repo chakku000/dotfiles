@@ -6,6 +6,8 @@ set termguicolors
 autocmd ColorScheme hybrid highlight MatchParen ctermbg=None guibg=None guifg=cyan
 autocmd ColorScheme hybrid highlight javaC_JavaLang guifg=#8abeb7
 
+autocmd ColorScheme hybrid highlight Search guibg=#5f875f
+
 set background=dark
 colorscheme hybrid 
 
