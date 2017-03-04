@@ -1,5 +1,6 @@
 " C,C++
 autocmd Filetype c,cpp setlocal cindent
+autocmd FileType cpp setlocal makeprg=g++\ -std=c++14\ %
 
 " Java
 autocmd Filetype java let java_highlight_all = 1
