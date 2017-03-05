@@ -22,9 +22,12 @@ call dein#add('octol/vim-cpp-enhanced-highlight',{
         \ })
 
 "----- Haskell -----
-call dein#add('neovimhaskell/haskell-vim',{
+"call dein#add('neovimhaskell/haskell-vim',{
+"            \ 'on_ft' : ['haskell',],
+"            \})
+call dein#add('dag/vim2hs',{
             \ 'on_ft' : ['haskell',],
-            \})
+            \}) 
 
 call dein#add('eagletmt/neco-ghc',{
             \ 'on_ft' : ['haskell',],
@@ -79,7 +82,7 @@ endif
 if dein#tap('lexima.vim')
 "    let g:lexima_enable_basic_rules=1
     "|)では括弧を保管しない
-    call lexima#add_rule({'char' : '(' , 'input':'(','at':'\%#)'})
+    "call lexima#add_rule({'char' : '(' , 'input':'(','at':'\%#)'})
     " コメント内では括弧を保管しない
     call lexima#add_rule({'char' : '(' , 'input' : '(' , 'syntax' : 'Comment'})
     " 文字列内では補完しない
