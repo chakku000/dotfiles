@@ -21,8 +21,9 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 alias g++11="g++ -std=c++11"
 alias g++="g++ -std=c++11"
 #alias tmux='tmux -2'
-alias tmux="env TERM=xterm-256color tmux"
+#alias tmux="env TERM=xterm-256color tmux"
 
+alias vim='nvim'
 alias gosh='rlwrap gosh'
 alias python='python3'
 alias filer='nemo &'
@@ -41,7 +42,7 @@ xkbcomp -I$HOME/.xkb $HOME/.xkb/keymap/mykbd $DISPLAY 2> /dev/null
 
 #export http_proxy="http://131.112.125.238:3128"
 export XDG_CONFIG_HOME=$HOME/.config
-export TERM=xterm-256color
+#export TERM=xterm-256color
 export PATH="$HOME/Library/Haskell/bin:$PATH"
 
 #for linux brew
