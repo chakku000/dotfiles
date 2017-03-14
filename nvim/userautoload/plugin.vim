@@ -108,3 +108,8 @@ if dein#tap('nerdtree')
 "    endif
 endif
 
+"vim2hs
+if dein#tap('vim2hs')
+    let g:haskell_conceal = 0
+endif
+
