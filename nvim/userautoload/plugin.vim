@@ -33,6 +33,11 @@ call dein#add('eagletmt/neco-ghc',{
             \ 'on_ft' : ['haskell',],
             \})
 
+"----- HTML ----
+call dein#add('othree/html5.vim',{
+            \ 'on_ft' : ['html',],
+            \})
+
 "---colorscheme----
 call dein#add('nanotech/jellybeans.vim')
 call dein#add('w0ng/vim-hybrid')
