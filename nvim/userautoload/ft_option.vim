@@ -13,7 +13,7 @@ autocmd Filetype haskell setlocal shiftwidth=2 tabstop=2        " 1 tab == 2 spa
 " softtabstop=4 : <TAB>が4個のスペースのように振る舞う
 " shiftwidth=4 : 自動インデント時に4幅
 autocmd FileType python setlocal noexpandtab
-autocmd FileType python setlocal tabstop=8 shiftwidth=8 softtabstop=8
+autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4
 
 " Tex
 let g:tex_flavor = "latex"

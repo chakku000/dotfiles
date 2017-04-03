@@ -33,6 +33,11 @@ call dein#add('eagletmt/neco-ghc',{
             \ 'on_ft' : ['haskell',],
             \})
 
+"----- HTML ----
+call dein#add('othree/html5.vim',{
+            \ 'on_ft' : ['html',],
+            \})
+
 "---colorscheme----
 call dein#add('nanotech/jellybeans.vim')
 call dein#add('w0ng/vim-hybrid')
@@ -106,5 +111,10 @@ if dein#tap('nerdtree')
 "    if has('vim_starting') &&  s:file_name == ''
 "        autocmd VimEnter * NERDTree ./
 "    endif
+endif
+
+"vim2hs
+if dein#tap('vim2hs')
+    let g:haskell_conceal = 0
 endif
 

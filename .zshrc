@@ -23,8 +23,10 @@ alias g++="g++ -std=c++11"
 #alias tmux='tmux -2'
 #alias tmux="env TERM=xterm-256color tmux"
 
+# miss typeing vim
 alias vim='nvim'
 alias nvi='nvim'
+alias grep='grep --color=always'
 alias gosh='rlwrap gosh'
 alias python='python3'
 alias filer='nemo &'
