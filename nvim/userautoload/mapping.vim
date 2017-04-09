@@ -16,11 +16,13 @@ inoremap <C-t> <C-V><Tab>
 "terminal modeからの脱出
 tnoremap <C-n> <C-\><C-n>
 
-
+" :W でlatexmkを使用してtexをコンパイル
 function! s:CompileTex()
     :w
     :! latexmk %
 endfunction
-
-command! W :call s:CompileTex() 
+autocmd Filetype tex command! W :call s:CompileTex() 
 nmap <F5> :W<CR>
+
+" <F1>でcursurcolumnの状態を反転
+nnoremap <F2> :<C-u>setlocal cursorcolumn!<CR>
