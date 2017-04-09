@@ -26,7 +26,6 @@ alias g++="g++ -std=c++14"
 # miss typeing vim
 alias vim='nvim'
 alias nvi='nvim'
-
 alias grep='grep --color=always'
 alias gosh='rlwrap gosh'
 alias python='python3'
