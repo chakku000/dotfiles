@@ -13,7 +13,7 @@ inoremap <C-l> <Right>
 inoremap <C-t> <C-V><Tab>
 
 " Insert modeで<C-@>は特別キーが割当ら得ており邪魔なので
-inoremap <C-@> <C-]>
+inoremap <C-@> <C-[>
 
 "terminal modeからの脱出
 tnoremap <C-n> <C-\><C-n>
