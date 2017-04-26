@@ -13,7 +13,11 @@ inoremap <C-l> <Right>
 inoremap <C-t> <C-V><Tab>
 
 " Insert modeで<C-@>は特別キーが割当ら得ており邪魔なので
-inoremap <C-@> <C-[>
+"inoremap <C-@> <C-[>
+"inoremap <C-@> :call s:Nothing()
+"なんかこれは動いたり動かなかったりする?:
+inoremap <C-@> <Nop>
+
 
 "terminal modeからの脱出
 tnoremap <C-n> <C-\><C-n>
@@ -23,7 +27,7 @@ function! s:CompileTex()
     :w
     :! latexmk %
 endfunction
-autocmd Filetype tex command! W :call s:CompileTex() 
+autocmd Filetype tex command! W :call s:CompileTex()
 nmap <F5> :W<CR>
 
 " <F1>でcursurcolumnの状態を反転
