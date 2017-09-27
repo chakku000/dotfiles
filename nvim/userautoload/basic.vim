@@ -13,11 +13,13 @@ set noshowcmd       " 入力中のコマンドを非表示
 set title           " タイトルを表示
 set cursorline      " 現在行を可視化
 
-set guicursor=a:blinkon0
+"set guicursor=a:blinkon0
+set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
 
 "====time======
 set ttimeout
-set timeoutlen=0
+"set timeoutlen=0
 
 "===copy and paste====
 set clipboard=unnamed,unnamedplus

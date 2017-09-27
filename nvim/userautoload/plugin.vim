@@ -33,8 +33,16 @@ call dein#add('eagletmt/neco-ghc',{
             \ 'on_ft' : ['haskell',],
             \})
 
+"----- Scala -----
+call dein#add('derekwyatt/vim-scala',{
+            \ 'on_ft' : ['scala',],
+            \})
+
 "----- HTML ----
 call dein#add('othree/html5.vim',{
+            \ 'on_ft' : ['html',],
+            \})
+call dein#add('mattn/emmet-vim',{
             \ 'on_ft' : ['html',],
             \})
 
@@ -118,3 +126,8 @@ if dein#tap('vim2hs')
     let g:haskell_conceal = 0
 endif
 
+
+"emmet-vim
+if dein#tap('emmet-vim')
+    let g:user_emmet_leader_key='<c-e>'
+endif
