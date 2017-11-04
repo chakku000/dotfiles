@@ -24,11 +24,13 @@ alias g++="g++ -std=c++14"
 #alias tmux="env TERM=xterm-256color tmux"
 
 # miss typeing vim
+alias vi='nvim'
 alias vim='nvim'
 alias nvi='nvim'
 alias grep='grep --color=always'
 alias gosh='rlwrap gosh'
 alias python='python3'
+alias py3='python3'
 alias filer='nemo &'
 alias sl='ls'
 alias -- ++='g++ -std=c++14'
@@ -52,6 +54,8 @@ export PATH="$HOME/Library/Haskell/bin:$PATH"
 export PATH="$HOME/.linuxbrew/bin:$PATH"
 export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
 export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+
+#export TEXMFLOCAL="$HOME/.tex"
 
 #----------------------------
 
