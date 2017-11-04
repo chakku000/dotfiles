@@ -54,6 +54,10 @@ set wrapscan            " 検索をファイル末尾までしたらファイル
 "===== Mouse =====
 set mouse=
 
+"==== Spell Check ====
+set nospell             " スペルチェックを無効化
+set spelllang=en,cjk    " 日本語をスペルチェックから除外
+
 
 let g:python3_host_prog = '/usr/bin/python3'
 
