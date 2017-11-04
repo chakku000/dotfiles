@@ -14,6 +14,9 @@ call dein#add('cohama/lexima.vim')
 " filer
 call dein#add('scrooloose/nerdtree')
 
+" surround
+call dein#add('tpope/vim-surround')
+
 "----- C++ ------
 call dein#add('octol/vim-cpp-enhanced-highlight',{
         \ 'on_ft':[
