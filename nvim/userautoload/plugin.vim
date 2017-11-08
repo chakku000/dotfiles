@@ -55,6 +55,9 @@ call dein#add('w0ng/vim-hybrid')
 
 call dein#add('itchyny/lightline.vim')
 
+"---- git ----
+call dein#add('lambdalisue/gina.vim')
+
 "-- My Plugin -----
 call dein#add('chakku000/OpenTemplate.vim')
 
@@ -108,7 +111,7 @@ endif
 " lightline
 if dein#tap('lightline.vim')
 	let g:lightline = {
-		\'colorscheme' : 'wombat',
+		\'colorscheme' : 'poi',
 		\}
 endif
 
