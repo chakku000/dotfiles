@@ -52,11 +52,15 @@ call dein#add('mattn/emmet-vim',{
 "---colorscheme----
 call dein#add('nanotech/jellybeans.vim')
 call dein#add('w0ng/vim-hybrid')
+call dein#add('cocopon/iceberg.vim')
 
 call dein#add('itchyny/lightline.vim')
 
 "---- git ----
 call dein#add('lambdalisue/gina.vim')
+
+"---- execution ----
+call dein#add('thinca/vim-quickrun')
 
 "-- My Plugin -----
 call dein#add('chakku000/OpenTemplate.vim')
@@ -97,6 +101,14 @@ if dein#tap('deoplete.nvim')
     endfunction"}}}
 endif
 
+" denite
+if dein#tap('denite.nvim')
+    " カレントディレクトリ
+    nnoremap <C-C> :Denite file<CR>
+    call denite#custom#map('insert','<C-s>','<denite:do_action:split>','noremap')
+    call denite#custom#map('insert','<C-v>','<denite:do_action:vsplit>','noremap')
+endif
+
 " lexima
 if dein#tap('lexima.vim')
 "    let g:lexima_enable_basic_rules=1
@@ -111,7 +123,7 @@ endif
 " lightline
 if dein#tap('lightline.vim')
 	let g:lightline = {
-		\'colorscheme' : 'poi',
+		\'colorscheme' : 'iceberg',
 		\}
 endif
 
@@ -136,4 +148,16 @@ endif
 "emmet-vim
 if dein#tap('emmet-vim')
     let g:user_emmet_leader_key='<c-e>'
+endif
+
+if dein#tap('iceberg.vim')
+    colorscheme iceberg
+endif
+
+if dein#tap('vim-quickrun')
+    let g:quickrun_config = {}
+    let g:quickrun_config.c = {
+                \   "command" : "gcc",
+                \   "cmdopt" : "-pthread"
+                \}
 endif

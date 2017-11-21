@@ -17,7 +17,7 @@ inoremap <C-t> <C-V><Tab>
 "inoremap <C-@> :call s:Nothing()
 "なんかこれは動いたり動かなかったりする?:
 inoremap <C-@> <Nop>
-
+nnoremap <C-.> <Nop>
 
 "terminal modeからの脱出
 tnoremap <C-n> <C-\><C-n>

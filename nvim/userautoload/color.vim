@@ -9,8 +9,7 @@ autocmd ColorScheme hybrid highlight javaC_JavaLang guifg=#8abeb7
 autocmd ColorScheme hybrid highlight Search guibg=#5f875f
 
 set background=dark
-"colorscheme hybrid 
-colorscheme jellybeans
+"colorscheme jellybeans
 
 " 補完ウィンドウの色
 "highlight Pmenu ctermbg=Red
