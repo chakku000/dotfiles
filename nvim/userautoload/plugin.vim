@@ -41,6 +41,14 @@ call dein#add('derekwyatt/vim-scala',{
             \ 'on_ft' : ['scala',],
             \})
 
+"----- Python ----
+call dein#add('scrooloose/syntastic',{
+            \ 'on_ft' : ['python'],
+            \})
+call dein#add('davidhalter/jedi-vim',{
+            \ 'on_ft' : ['python'],
+            \})
+
 "----- HTML ----
 call dein#add('othree/html5.vim',{
             \ 'on_ft' : ['html',],
@@ -160,4 +168,8 @@ if dein#tap('vim-quickrun')
                 \   "command" : "gcc",
                 \   "cmdopt" : "-pthread"
                 \}
+endif
+
+if dein#tap('syntastic')
+    let g:syntastic_python_checkers = ['pyflakes', 'pep8']
 endif

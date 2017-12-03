@@ -12,12 +12,16 @@ inoremap <C-l> <Right>
 
 inoremap <C-t> <C-V><Tab>
 
+"ctrl-spaceに何か割り当てられてるので無効化
+inoremap <C-Space> <Nop>
+
 " Insert modeで<C-@>は特別キーが割当ら得ており邪魔なので
 "inoremap <C-@> <C-[>
 "inoremap <C-@> :call s:Nothing()
 "なんかこれは動いたり動かなかったりする?:
 inoremap <C-@> <Nop>
 nnoremap <C-.> <Nop>
+nnoremap . <Nop>
 
 "terminal modeからの脱出
 tnoremap <C-n> <C-\><C-n>
