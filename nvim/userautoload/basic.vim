@@ -43,6 +43,8 @@ set backspace=indent,eol,start      " インデントと改行をbackspaceで消
 set foldmethod=marker
 set modeline
 
+set splitright          " 垂直方向に画面分割をしたときに右画面に新しいウィンドウを開く
+
 "===== Search =====
 set ignorecase          " 大文字と小文字を区別しない
 set smartcase           " 検索に大文字が含まれていた場合ignorecaseを上書きする
