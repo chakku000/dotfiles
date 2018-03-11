@@ -1,12 +1,16 @@
 #マニュアル man zshmoduloes
-#autoload -U : -Uオプションをつけるとユーザーのaliasによってその関数が書き換えられるのを防ぐ
+# autoload : シェル関数を$fpathからロード(実行するわけではない)
+# autoload -U : ロードされる関数内でaliasを展開しない
 
+# 補完の初期化
+# compinit : 補完に必要な機能をロード(機能を全て有効にするわけではない?)
 autoload -U compinit
 compinit
 
 export LANG=ja_JP.UTF-8
 
 bindkey -v
+bindkey '^R' history-incremental-search-backward
 
 #色を使用できるようにする
 autoload -Uz colors
