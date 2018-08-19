@@ -11,23 +11,50 @@ call dein#add('Shougo/denite.nvim')
 
 call dein#add('cohama/lexima.vim')
 
-" filer
+" Snippet
+call dein#add('Shougo/neosnippet.vim',{
+            \ 'on_ft' : [
+            \   'tex',
+            \   ],
+            \})
+
+
+call dein#add('Shougo/neosnippet-snippets',{
+            \ 'on_ft' : [
+            \   'tex',
+            \   ],
+            \})
+
+"filer
 call dein#add('scrooloose/nerdtree')
 
-" surround
+"surround
 call dein#add('tpope/vim-surround')
 
-"----- C++ ------
+""----- C++ ------
 call dein#add('octol/vim-cpp-enhanced-highlight',{
-        \ 'on_ft':[
-        \    'cpp',
-        \   ],
-        \ })
+            \ 'on_ft':[
+            \    'c','cpp',
+            \   ],
+            \ })
+call dein#add('Mizuchi/STL-Syntax',{
+            \ 'on_ft' : [
+            \   'c','cpp',
+            \   ],
+            \})
+
+call dein#add('vim-jp/cpp-vim',{
+            \ 'on_ft' : [
+            \   'cpp',
+            \],
+            \})
 
 "----- Haskell -----
+""""" Unused
 "call dein#add('neovimhaskell/haskell-vim',{
 "            \ 'on_ft' : ['haskell',],
 "            \})
+
 call dein#add('dag/vim2hs',{
             \ 'on_ft' : ['haskell',],
             \}) 
@@ -61,17 +88,23 @@ call dein#add('mattn/emmet-vim',{
 call dein#add('nanotech/jellybeans.vim')
 call dein#add('w0ng/vim-hybrid')
 call dein#add('cocopon/iceberg.vim')
-
+"
 call dein#add('itchyny/lightline.vim')
-
+"
 "---- git ----
 call dein#add('lambdalisue/gina.vim')
 
 "---- execution ----
 call dein#add('thinca/vim-quickrun')
 
+"---- ANTLR
+call dein#add('dylon/vim-antlr')
+
 "-- My Plugin -----
 call dein#add('chakku000/OpenTemplate.vim')
+
+"--- Local Plugin ----
+"call dein#local("~/Programing/Vimscript/Plugins")
 
 call dein#end()
 
@@ -115,6 +148,7 @@ if dein#tap('denite.nvim')
     nnoremap <C-C> :Denite file<CR>
     call denite#custom#map('insert','<C-s>','<denite:do_action:split>','noremap')
     call denite#custom#map('insert','<C-v>','<denite:do_action:vsplit>','noremap')
+    call denite#custom#map('insert','<C-t>','<denite:do_action:tabopen>','noremap')
 endif
 
 " lexima
@@ -172,4 +206,15 @@ endif
 
 if dein#tap('syntastic')
     let g:syntastic_python_checkers = ['pyflakes', 'pep8']
+endif
+
+if dein#tap('vim-cpp-enhanced-highlight')
+    "let g:cpp_experimental_simple_template_highlight = 1
+    let g:cpp_class_scope_highlight = 1
+endif
+
+if dein#tap('neosnippet.vim')
+    imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+    smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+    xmap <C-k>     <Plug>(neosnippet_expand_target)
 endif

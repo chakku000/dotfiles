@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_cnt =4
 let g:netrw_dirhist_1='/home/chakku/Music'
 let g:netrw_dirhist_2='/home/chakku/dotfiles/nvim'
 let g:netrw_dirhist_3='/home/chakku/Programing/Pin/pin-3.4-97438-gf90d1f746-gcc-linux/source/tools/Sotsuron'
+let g:netrw_dirhist_4='/home/chakku'
