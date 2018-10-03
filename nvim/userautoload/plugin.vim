@@ -100,6 +100,16 @@ call dein#add('thinca/vim-quickrun')
 "---- ANTLR
 call dein#add('dylon/vim-antlr')
 
+"---- Ocaml
+if executable('opam')
+    call dein#add('$HOME/.opam/4.07.0/share/merlin/vim',{
+                \ 'on_ft' : ['ocaml'],
+                \})
+    call dein#add('copy/deoplete-ocaml',{
+                \'on_ft' : ['ocaml'],
+                \})
+endif
+
 "-- My Plugin -----
 call dein#add('chakku000/OpenTemplate.vim')
 
@@ -218,3 +228,5 @@ if dein#tap('neosnippet.vim')
     smap <C-k>     <Plug>(neosnippet_expand_or_jump)
     xmap <C-k>     <Plug>(neosnippet_expand_target)
 endif
+
+
