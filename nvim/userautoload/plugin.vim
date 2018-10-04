@@ -224,12 +224,15 @@ if dein#tap('vim-cpp-enhanced-highlight')
     let g:cpp_class_scope_highlight = 1
 endif
 
-if dein#tap('neosnippet.vim')
-    imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-    smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-    xmap <C-k>     <Plug>(neosnippet_expand_target)
-endif
 
+if dein#tap('neosnippet.vim')
+    function! s:neosnippet_on_source()
+        imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+        smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+        xmap <C-k>     <Plug>(neosnippet_expand_target)
+    endfunction
+    call dein#set_hook(g:dein#plugin['name'],'hook_source',function('s:neosnippet_on_source'))
+endif
 
 if dein#tap('defx.nvim')
 	autocmd FileType defx call s:defx_my_settings()
