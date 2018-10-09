@@ -102,7 +102,7 @@ call dein#add('thinca/vim-quickrun')
 call dein#add('dylon/vim-antlr')
 
 "---- Ocaml
-if executable('opam')
+if executable('opam') && isdirectory(expand('$HOME/.opam/4.07.0/share/merlin/vim'))
     call dein#add('$HOME/.opam/4.07.0/share/merlin/vim',{
                 \ 'on_ft' : ['ocaml'],
                 \})
