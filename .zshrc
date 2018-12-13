@@ -40,7 +40,7 @@ alias sl='ls'
 alias -- ++='g++ -std=c++14'
 
 # This is required for IQ1
-alias mv = 'mv-i'
+alias mv = 'mv -i'
 alias cp = 'cp -i'
 
 if [ -e "$HOME/App/bs/col.sh" ]; then
