@@ -28,9 +28,9 @@ alias g++="g++ -std=c++14"
 #alias tmux="env TERM=xterm-256color tmux"
 
 # miss typeing vim
-alias vi='nvim'
+ alias vi='nvim'
 alias vim='nvim'
-alias nvi='nvim'
+# alias nvi='nvim'
 alias grep='grep --color=always'
 alias gosh='rlwrap gosh'
 alias python='python3'
@@ -38,6 +38,11 @@ alias py3='python3'
 alias filer='nemo &'
 alias sl='ls'
 alias -- ++='g++ -std=c++14'
+
+# This is required for IQ1
+alias mv = 'mv-i'
+alias cp = 'cp -i'
+
 if [ -e "$HOME/App/bs/col.sh" ]; then
     alias colortest="bash $HOME/App/bs/col.sh"
 fi
@@ -46,6 +51,8 @@ fi
 #アセンブラ用
 alias asgcc='gcc -S -m32 -O0 -fno-asynchronous-unwind-tables'
 
+ONI_NEOVIM_PATH=$HOME/.local/bin/nvim
+export ONI_NEOVIM_PATH
 
 xkbcomp -I$HOME/.xkb $HOME/.xkb/keymap/mykbd $DISPLAY 2> /dev/null
 
@@ -146,3 +153,5 @@ case ${OSTYPE} in
 esac
  
 # vim:set ft=zsh:
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
