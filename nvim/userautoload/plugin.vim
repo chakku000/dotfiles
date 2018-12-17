@@ -32,6 +32,12 @@ call dein#add('scrooloose/nerdtree')
 "surround
 call dein#add('tpope/vim-surround')
 
+" commentout
+call dein#add('tpope/vim-commentary',{
+            \ 'on_ft':['ocaml'],
+            \ 'hook_source': 'autocmd FileType ocaml setlocal commentstring=(*\ %s\ *)',
+            \})
+
 ""----- C++ ------
 call dein#add('octol/vim-cpp-enhanced-highlight',{
             \ 'on_ft':[
@@ -98,10 +104,15 @@ call dein#add('lambdalisue/gina.vim')
 "---- execution ----
 call dein#add('thinca/vim-quickrun')
 
+"---- terminal
+call dein#add('kassio/neoterm')
+
 "---- ANTLR
 call dein#add('dylon/vim-antlr')
 
 "---- Ocaml
+
+" Merlinが必要
 if executable('opam') && isdirectory(expand('$HOME/.opam/4.07.0/share/merlin/vim'))
     call dein#add('$HOME/.opam/4.07.0/share/merlin/vim',{
                 \ 'on_ft' : ['ocaml'],
@@ -160,6 +171,9 @@ if dein#tap('denite.nvim')
     call denite#custom#map('insert','<C-s>','<denite:do_action:split>','noremap')
     call denite#custom#map('insert','<C-v>','<denite:do_action:vsplit>','noremap')
     call denite#custom#map('insert','<C-t>','<denite:do_action:tabopen>','noremap')
+
+    nnoremap <C-d> :Denite mark<CR>
+    nnoremap <C-s> :Denite register<CR>
 endif
 
 " lexima
