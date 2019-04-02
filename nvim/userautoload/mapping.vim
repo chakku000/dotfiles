@@ -36,3 +36,6 @@ nmap <F5> :W<CR>
 
 " <F1>でcursurcolumnの状態を反転
 nnoremap <F2> :<C-u>setlocal cursorcolumn!<CR>
+
+" <S-up>を無効化(HHKBで間違えて押しがち
+inoremap <S-up> <Nop>

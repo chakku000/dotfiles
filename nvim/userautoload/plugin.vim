@@ -34,8 +34,13 @@ call dein#add('tpope/vim-surround')
 
 " commentout
 call dein#add('tpope/vim-commentary',{
-            \ 'on_ft':['ocaml'],
+            \ 'on_ft':['ocaml','cpp'],
             \ 'hook_source': 'autocmd FileType ocaml setlocal commentstring=(*\ %s\ *)',
+            \})
+
+""----- C --------
+call dein#add('chakku000/C-pthread-syntax',{
+            \ 'on_ft' : ['c']
             \})
 
 ""----- C++ ------
@@ -299,4 +304,9 @@ if dein#tap('defx.nvim')
         nnoremap <silent><buffer><expr> <C-g>
                     \ defx#do_action('print')
     endfunction
+endif
+
+if dein#tap('syntastic')
+    let g:syntastic_python_checkers = ['pep8']
+    let g:syntastic_python_pep8_args = '--ignore="E201,E203,E251,E302,E305,E501"'
 endif
