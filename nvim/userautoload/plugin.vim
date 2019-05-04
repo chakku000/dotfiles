@@ -331,6 +331,6 @@ endif
 
 
 if dein#tap('vim-easymotion')
-    nmap <Leader><Leader>s <Plug>(easymotion-overwin-f2)
+    nmap <Leader><Leader>g <Plug>(easymotion-bd-t2)
     nmap <Leader><Leader>L <Plug>(easymotion-overwin-line)
 endif
