@@ -17,6 +17,7 @@ call dein#add('Shougo/neosnippet.vim',{
             \ 'on_ft' : [
             \   'tex',
             \   ],
+            \ 'depends' : ['Shougo/neosnippet-snippets'],
             \})
 
 
@@ -37,6 +38,9 @@ call dein#add('tpope/vim-commentary',{
             \ 'on_ft':['ocaml','cpp'],
             \ 'hook_source': 'autocmd FileType ocaml setlocal commentstring=(*\ %s\ *)',
             \})
+
+" Move support
+call dein#add('easymotion/vim-easymotion')
 
 ""----- C --------
 call dein#add('chakku000/C-pthread-syntax',{
@@ -126,6 +130,20 @@ if executable('opam') && isdirectory(expand('$HOME/.opam/4.07.0/share/merlin/vim
                 \'on_ft' : ['ocaml'],
                 \})
 endif
+
+"---------- Fsharp ----------
+call dein#add('fsharp/vim-fsharp', {
+            \ 'on_ft' : 'fsharp',
+            \ 'build' : 'make fsautocomplete',
+            \ 'hook_source' : 'setlocal omnifunc=fsharpbinding#python#Complete'
+            \})
+
+
+call dein#add('callmekohei/deoplete-fsharp',{
+            \ 'lazy' : 1,
+            \ 'on_ft' : 'fsharp',
+            \ 'build' : 'bash install.bash',
+            \})
 
 "-- My Plugin -----
 call dein#add('chakku000/OpenTemplate.vim')
@@ -308,5 +326,11 @@ endif
 
 if dein#tap('syntastic')
     let g:syntastic_python_checkers = ['pep8']
-    let g:syntastic_python_pep8_args = '--ignore="E201,E203,E251,E302,E305,E501"'
+    let g:syntastic_python_pep8_args = '--ignore="E201,E203,E231,E251,E302,E305,E501"'
+endif
+
+
+if dein#tap('vim-easymotion')
+    nmap <Leader><Leader>s <Plug>(easymotion-overwin-f2)
+    nmap <Leader><Leader>L <Plug>(easymotion-overwin-line)
 endif
