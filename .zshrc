@@ -16,6 +16,9 @@ bindkey '^R' history-incremental-search-backward
 autoload -Uz colors
 colors
 
+## .prefix
+source ~/.profile
+
 #----------------
 #適当に追加した設定
 #----------------
@@ -23,7 +26,7 @@ zstyle ':completion:*:default' menu select=1
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 alias g++11="g++ -std=c++11"
-alias g++="g++ -std=c++14"
+alias g++="g++ -std=c++14 -Wall"
 #alias tmux='tmux -2'
 #alias tmux="env TERM=xterm-256color tmux"
 
@@ -40,8 +43,12 @@ alias sl='ls'
 alias -- ++='g++ -std=c++14'
 
 # This is required for IQ1
-alias mv = 'mv -i'
-alias cp = 'cp -i'
+alias mv='mv -i'
+alias cp='cp -i'
+
+# Docker呼び出し
+alias tex-docker='docker run --rm -it -v $PWD:/workdir docker-tex'
+alias tex-ubuntu='docker run --rm -it -v $PWD:/work tex-ubuntu'
 
 if [ -e "$HOME/App/bs/col.sh" ]; then
     alias colortest="bash $HOME/App/bs/col.sh"
@@ -153,5 +160,31 @@ case ${OSTYPE} in
 esac
  
 # vim:set ft=zsh:
-export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
+#export PATH="$HOME/.jenv/bin:$PATH"
+#eval "$(jenv init -)"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/chakku/.sdkman"
+[[ -s "/home/chakku/.sdkman/bin/sdkman-init.sh" ]] && source "/home/chakku/.sdkman/bin/sdkman-init.sh"
+
+## pyenv
+
+
+# nvmの設定
+## nvm.shの読み込みが非常に重く、シェルの起動が明らかに遅くなる
+## 対応としてsource nvm.shを遅延させる
+
+#### nvmコマンドを叩くとこのnvm関数が呼ばれる
+nvm () {
+    echo "NVM Command!!!"
+
+    if [ -v NVM_SOURCED ]; then # すでにsourceされている場合
+        echo "Already sourced"
+    else    # sourceされていない場合
+        echo "Not sourced"
+        unset -f nvm
+        source $HOME/.nvm/nvm.sh
+    fi
+
+    NVM_SOURCED=1
+}
