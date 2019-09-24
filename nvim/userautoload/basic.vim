@@ -20,6 +20,8 @@ set synmaxcol=500   " 500文字を超えたらhighlight off
 "let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
 
 "====time======
+" キーマッピングとキーコードの両方にタイムアウトを設ける
+set timeout
 set ttimeout
 "set timeoutlen=0
 
@@ -30,9 +32,9 @@ set clipboard=unnamed,unnamedplus
 "===tab edit========
 set expandtab           " tabキーで半角スペースが挿入される
 set smarttab            " 行頭でtabキーを入力するとshiftwidthの数だけインデントされる
+set shiftwidth=4        " インデントを挿入するとき(>>や<<を使用した時)に4このスペースを入れる
 set tabstop=4           " ファイル中の^I文字をスペース4文字分で表示させる
-set shiftwidth=4        " インデントを挿入するときに4このスペースを入れる
-set softtabstop=4       " tabキーを押した時
+set softtabstop=4       " tabキーを押した時に4個のスペースを挿入する
 set shiftround          " インデントをshiftwidthの倍数にする
 set autoindent
 set smartindent
@@ -61,8 +63,22 @@ set nospell             " スペルチェックを無効化
 set spelllang=en,cjk    " 日本語をスペルチェックから除外
 
 
+let mapleader = ","
 let g:python3_host_prog = '/usr/bin/python3'
+let g:python_host_prog = '/usr/bin/python2'
 
 "===== autocmd =====
 autocmd QuickFixCmdPost make copen
 
+
+"===== Color =====
+"let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+set termguicolors   " 24-bit colorを使用可能にする. Note: Tmux上でundercursorが動かない
+
+set background=dark
+
+" カラースキームがhybridの際に括弧の対応色を変える
+autocmd ColorScheme hybrid highlight MatchParen ctermbg=None guibg=None guifg=cyan
+autocmd ColorScheme hybrid highlight javaC_JavaLang guifg=#8abeb7
+
+autocmd ColorScheme hybrid highlight Search guibg=#5f875f
