@@ -1,0 +1,6 @@
+[[plugins]]
+repo = 'rafi/awesome-vim-colorschemes'
+hook_add = '''
+    set background=dark
+    autocmd ColorSetting VimEnter * nested colorscheme afterglow
+'''
