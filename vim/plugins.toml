@@ -4,3 +4,20 @@ hook_add = '''
     set background=dark
     autocmd ColorSetting VimEnter * nested colorscheme afterglow
 '''
+
+[[plugins]]
+# on_ftがあるからどうせ遅延されると思ってlazy.tomlにうつしたら動かなかった...
+# on_系があっても遅延されるわけではない?
+repo = 'bfrg/vim-cpp-modern'
+on_ft=['cpp']
+
+[[plugins]]
+repo = 'junegunn/fzf'
+build = './install'
+
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+depends = 'fzf'
+
+[[plugins]]
+repo = 'neoclide/coc.nvim'

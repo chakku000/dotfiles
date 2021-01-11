@@ -1,3 +1,5 @@
+let mapleader = ','
+
 " TODO read only when on iTerm2
 source $HOME/develop/dotfiles/vim/iterm.vim
 "set runtimepath+=~/develop/dotfiles
@@ -73,6 +75,8 @@ set foldmethod=marker
 "====================
 " コマンドライン等
 "====================
+set wildmenu
+"set wildmode=longest:full:full
 set laststatus=2 "常にステータス行を表示
 "option.txt laststatusにあるlast windowってどのウィンドウのことを意味してるの?
 "set cmdheight=2     "コマンド行の高さ2
@@ -118,7 +122,9 @@ if dein#load_state('~/.cache/dein')
 
   let s:toml_dir = expand('~/develop/dotfiles/vim')
   let s:toml =  s:toml_dir . '/plugins.toml'
+  let s:lazy_toml = s:toml_dir . '/lazy.toml'
   call dein#load_toml(s:toml, {'lazy': 0})
+  call dein#load_toml(s:toml, {'lazy': 1})
 
   call dein#end()
   call dein#save_state()

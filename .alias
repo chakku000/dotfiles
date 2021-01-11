@@ -1,0 +1,6 @@
+alias cp='cp -i'
+alias mv='mv -i'
+alias ls='ls -G -F'
+
+alias python='python3'
+alias pip='pip3'
