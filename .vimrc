@@ -1,7 +1,7 @@
 let mapleader = ','
 
 " TODO read only when on iTerm2
-source $HOME/develop/dotfiles/vim/iterm.vim
+"source $HOME/develop/dotfiles/vim/iterm.vim
 "set runtimepath+=~/develop/dotfiles
 "runtime! vim/*.vim
 
@@ -98,9 +98,11 @@ vnoremap <silent> <C-p> "0p<CR>
 nnoremap <silent> <C-p> "0p<CR>
 
 "====================
-" clipboard
+" others
 "====================
 set clipboard=unnamed
+set ttimeout
+set ttimeoutlen=0
 
 "----------
 " dein
