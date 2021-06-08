@@ -78,7 +78,8 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 #color scheck
 # for c in {000..255}; do echo -n "\e[38;5;${c}m $c"; [ $(($c%16)) -eq 15 ] && echo; done; echo
 PROMPT="%K{093}%F{015}%B[%n@%m]%b%f%k%K{021}%F{015}%B[%~]%b%f%k
-%F{208}>%f "
+%F{208}(✿╹◡╹)ﾉ%f "
+
 
 # coloring `ls` output
 # LSCOLORS is for BSD (and MacOS)
@@ -108,3 +109,48 @@ precmd () {
     [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
 }
 RPROMPT="%1(v|%F{magenta}%1v%f|)"
+
+##############################
+#            Zinit           #
+##############################
+### Added by Zinit's installer
+if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+        print -P "%F{160}▓▒░ The clone has failed.%f%b"
+fi
+
+source "$HOME/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zinit-zsh/z-a-rust \
+    zinit-zsh/z-a-as-monitor \
+    zinit-zsh/z-a-patch-dl \
+    zinit-zsh/z-a-bin-gem-node
+
+### End of Zinit's installer chunk
+
+##############################
+#         zsh plugins        #
+##############################
+zinit light zsh-users/zsh-autosuggestions
+bindkey '^e' autosuggest-accept
+#zinit load zdharma/history-search-multi-word
+
+zinit light zsh-users/zsh-syntax-highlighting
+(( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_STYLES[path]=none
+ZSH_HIGHLIGHT_STYLES[path_prefix]=none
+
+
+
+##############################
+#            fzf             #
+##############################
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
